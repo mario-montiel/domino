@@ -1,0 +1,50 @@
+CREATE SCHEMA IF NOT EXISTS `domino_db` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci ;
+USE `domino_db` ;
+
+-- -----------------------------------------------------
+-- Table `domino_db`.`jugadores`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `domino_db`.`jugadores` (
+  `jugador_id` INT NOT NULL AUTO_INCREMENT,
+  `jugador_nombre` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`jugador_id`),
+  UNIQUE INDEX `jugador_id_UNIQUE` (`jugador_id` ASC))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `domino_db`.`fichas`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `domino_db`.`fichas` (
+  `ficha_id` INT NOT NULL AUTO_INCREMENT,
+  `ficha_status` INT NOT NULL,
+  `ficha_valor1` INT NOT NULL,
+  `ficha_valor2` INT NOT NULL,
+  `jugador_id` INT NOT NULL,
+  PRIMARY KEY (`ficha_id`),
+  UNIQUE INDEX `ficha_id_UNIQUE` (`ficha_id` ASC),
+  INDEX `fk_fichas_jugadores_idx` (`jugador_id` ASC),
+  CONSTRAINT `fk_fichas_jugadores`
+    FOREIGN KEY (`jugador_id`)
+    REFERENCES `domino_db`.`jugadores` (`jugador_id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `domino_db`.`puntuaciones`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `domino_db`.`puntuaciones` (
+  `puntuacion_id` INT NOT NULL AUTO_INCREMENT,
+  `puntuacion_puntos` INT NOT NULL,
+  `jugador_id` INT NOT NULL,
+  PRIMARY KEY (`puntuacion_id`),
+  UNIQUE INDEX `puntuacion_id_UNIQUE` (`puntuacion_id` ASC),
+  INDEX `fk_puntuaciones_jugadores1_idx` (`jugador_id` ASC),
+  CONSTRAINT `fk_puntuaciones_jugadores1`
+    FOREIGN KEY (`jugador_id`)
+    REFERENCES `domino_db`.`jugadores` (`jugador_id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
