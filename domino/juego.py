@@ -48,7 +48,7 @@ class Juego:
                 self.ultima_ficha_puesta = i
                 print("ÚLTIMA FICHA PUESTA: " + str(self.ultima_ficha_puesta))
                 self.iniciar_mula = 1
-                return i[4]
+                return i[4] +1
             
         for i in self.fichas_jugador2:
             if i[0] == 28:
@@ -57,7 +57,7 @@ class Juego:
                 self.ultima_ficha_puesta = i
                 print("ÚLTIMA FICHA PUESTA: " + str(self.ultima_ficha_puesta))
                 self.iniciar_mula = 1
-                return i[4]
+                return i[4] +1
             
         for i in self.fichas_jugador3:
             if i[0] == 28:
@@ -66,7 +66,7 @@ class Juego:
                 self.ultima_ficha_puesta = i
                 print("ÚLTIMA FICHA PUESTA: " + str(self.ultima_ficha_puesta))
                 self.iniciar_mula = 1
-                return i[4]
+                return i[4] +1
             
         for i in self.fichas_jugador4:
             if i[0] == 28:
@@ -75,7 +75,7 @@ class Juego:
                 self.ultima_ficha_puesta = i
                 print("\nÚLTIMA FICHA PUESTA: " + str(self.ultima_ficha_puesta))
                 self.iniciar_mula = 1
-                return i[4]
+                return i[4] +1
         
     def poner_ficha(self, click, jugador):
         # COMPARO FICHA Y LA ELIMINO A LA VERGA!!!
