@@ -73,12 +73,24 @@ while True:
 			elif event.type == pygame.MOUSEBUTTONDOWN:
 				if input_box.collidepoint(event.pos):
 					active = not active
+					active2 = False
+					active3 = False
+					active4 = False
 				elif input_box2.collidepoint(event.pos):
 					active2 = not active2
+					active = False
+					active3 = False
+					active4 = False
 				elif input_box3.collidepoint(event.pos):
 					active3 = not active3
+					active = False
+					active2 = False
+					active4 = False
 				elif input_box4.collidepoint(event.pos):
 					active4 = not active4
+					active = False
+					active2 = False
+					active3 = False
 				else:
 					active = False
 					active2 = False
