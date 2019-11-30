@@ -25,7 +25,7 @@ while indice != 5:
     jugador.append(nombre_jugadores)
     # PASO LAS FICHAS ALEATORIAS OBTENIDAS DE LA BD A LA CLASE JUEGO
     juego.fichas = set(fichas)
-    juego.repartir_fichas(indice, random.sample(total_fichas, k=28))
+    juego.repartir_fichas(indice, total_fichas)
     indice += 1
 
 print("JUGADORES: " + str(jugador))
