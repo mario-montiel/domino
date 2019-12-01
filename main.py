@@ -43,7 +43,7 @@ try:
     # db.poner_ficha(3, juego.fichas_jugador1, juego.fichas_jugador2, 
     #                          juego.fichas_jugador3, juego.fichas_jugador4)
 except:
-    error
+    print("valió vrga")
     
 while juego.iniciar_mula != 1:
         turno = juego.poner_mula(total_fichas)

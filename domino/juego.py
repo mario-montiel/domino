@@ -25,8 +25,9 @@ class Juego:
     def repartir_fichas(self, jugador, fichas):
         # SE REPARTEN LAS FICHAS DEPENDIENDO EL NÚMERO DEL JUGADOR
         for i in fichas:
+            print(i)
             if jugador == 1 and i[4] == 1:
-                self.fichas_jugador1.append(i)
+                x = self.fichas_jugador1.append(i)
             elif jugador == 2 and i[4] == 2:
                 self.fichas_jugador2.append(i)
             elif jugador == 3 and i[4] == 3:

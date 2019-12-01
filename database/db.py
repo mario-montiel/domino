@@ -36,7 +36,7 @@ class Conexion:
             cursor = conexion.cursor()
             actualizar = "UPDATE jugadores SET jugadores.jugador_nombre = %s WHERE jugadores.jugador_id = %s"
             for i in n_jugadores:
-                cursor.execute(actualizar, (i[0], id))
+                cursor.execute(actualizar, (i, id))
                 id += 1
                     
             conexion.commit()

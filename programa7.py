@@ -76,8 +76,8 @@ while True:
 		input_box4 = pygame.Rect(520,485, 340, 32)
 		try:
 			juego.mula = db.obtener_mula()
-			fichas = random.sample(db,database(1), k=28)
-			total_fichas = random.sample(db, database(1), k = 28)
+			fichas = random.sample(db.database(1), k=28)
+			total_fichas = random.sample(db.database(1), k = 28)
 		except:
 			eltexto = fuenteconexion.render("!! NO SE ENCONTRÓ NINGUNA BASE DE DATOS !!", 0, (233,233,87))
 			ventanta.blit(eltexto,(400,50))
@@ -114,10 +114,11 @@ while True:
 					nombre_jugadores.append(text3)
 					nombre_jugadores.append(text4)
 					juego.fichas = set(fichas)
-					juego.repartir_fichas(1, random.sample(total_fichas, k=28))
-					juego.repartir_fichas(2, random.sample(total_fichas, k=28))
-					juego.repartir_fichas(3, random.sample(total_fichas, k=28))
-					juego.repartir_fichas(4, random.sample(total_fichas, k=28))
+					print(juego.fichas)
+					juego.repartir_fichas(1, total_fichas)
+					juego.repartir_fichas(2, total_fichas)
+					juego.repartir_fichas(3, total_fichas)
+					juego.repartir_fichas(4, total_fichas)
 					try:
 						db.ingresar_jugadores(nombre_jugadores)
 						db.asignar_fichas_db(2, juego.fichas_jugador1, juego.fichas_jugador2, juego.fichas_jugador3, juego.fichas_jugador4, fichas)
