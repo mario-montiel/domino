@@ -15,7 +15,7 @@ try:
     # OBTENGO DE LA CONSULTA TODAS LAS FICHAS Y LA GUARDO EN EL ARREGLO FICHAS DE FORMA ALEATORIA
     fichas = random.sample(db.database(1), k=28)
     #OBTENERMOS OTRA VEZ LAS FICHAS
-    total_fichas = random.sample(db.database(1), k=28)
+    total_fichas =  random.sample(db.database(1), k=28)
 except:
     error
     
@@ -25,8 +25,11 @@ while indice != 5:
     jugador.append(nombre_jugadores)
     # PASO LAS FICHAS ALEATORIAS OBTENIDAS DE LA BD A LA CLASE JUEGO
     juego.fichas = set(fichas)
-    juego.repartir_fichas(indice, total_fichas)
+    juego.repartir_fichas(indice, (fichas))
     indice += 1
+    
+# print(juego.fichas_jugador1)
+# print(fichas)
 
 print("JUGADORES: " + str(jugador))
 
@@ -36,8 +39,7 @@ try:
     # MANDO EL NOMBRE DE LOS JUGADORES A LA CLASE DE LA BASE DE DATOS
     db.ingresar_jugadores(jugador)
     # OBTENGO DE LA CONSULTA TODAS LAS FICHAS Y LA GUARDO EN EL ARREGLO FICHAS DE FORMA ALEATORIA
-    db.asignar_fichas_db(2, juego.fichas_jugador1, juego.fichas_jugador2, 
-                             juego.fichas_jugador3, juego.fichas_jugador4, fichas)
+    db.asignar_fichas_db(2, juego.fichas_jugador1, juego.fichas_jugador2, juego.fichas_jugador3, juego.fichas_jugador4, fichas)
     
     # ads
     # db.poner_ficha(3, juego.fichas_jugador1, juego.fichas_jugador2, 

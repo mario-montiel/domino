@@ -30,6 +30,7 @@ class Conexion:
             print("Something went wrong: {}".format(err))
             
     def ingresar_jugadores(self, n_jugadores):
+        # print("asdfsadf")
         try:
             id = 1
             conexion = mysql.connector.connect(**self.db)
@@ -44,46 +45,50 @@ class Conexion:
         except mysql.connector.Error as err:
             print("Something went wrong: {}".format(err))
 
-    def asignar_fichas_db(self, consulta, jugador1, jugador2, jugador3, jugador4):
+    def asignar_fichas_db(self, consulta, jugador1, jugador2, jugador3, jugador4, fichas):
         try:
             conexion = mysql.connector.connect(**self.db)
             cursor = conexion.cursor()
-            fichas_id = "SELECT fichas.ficha_id FROM fichas WHERE fichas.ficha_status = %s"
-            cursor.execute(fichas_id, (0,))
-            resultado = cursor.fetchall()
             indice = 0
-            # for i in resultado:
-            #     print(i)
             for i in jugador1:
-                self.id_j_1.append(i[0])
+                # print("WOW")
+                # print(jugador1)
+                self.id_j_1.append(i)
             for i in jugador2:
-                self.id_j_2.append(i[0])
+                self.id_j_2.append(i)
             for i in jugador3:
-                self.id_j_3.append(i[0])
+                self.id_j_3.append(i)
             for i in jugador4:
-                self.id_j_4.append(i[0])
+                self.id_j_4.append(i)
                 
             if consulta == 2:
                 actualizar = "UPDATE fichas SET fichas.jugador_id = %s WHERE fichas.ficha_id = %s"
+                
+                
                 for i in self.id_j_1:
-                    cursor.execute(actualizar, (1, self.id_j_1[indice]))
-                    indice += 1
-                indice = 0
+                    for j in i:
+                        # print(j)
+                        self.id_j_1 = []
+                        self.id_j_1 = j[0]
+                        cursor.execute(actualizar, (1, j[0]))
                 for i in self.id_j_2:
-                    cursor.execute(actualizar, (2, self.id_j_2[indice]))
-                    indice += 1
-                indice = 0
+                    for j in i:
+                        self.id_j_2 = []
+                        self.id_j_2 = j[0]
+                        cursor.execute(actualizar, (2, self.id_j_2))
                 for i in self.id_j_3:
-                    cursor.execute(actualizar, (3, self.id_j_3[indice]))
-                    indice += 1
-                indice = 0
+                    for j in i:
+                        self.id_j_3 = []
+                        self.id_j_3 = j[0]
+                        cursor.execute(actualizar, (3, self.id_j_3))
                 for i in self.id_j_4:
-                    cursor.execute(actualizar, (4, self.id_j_4[indice]))
-                    indice += 1
-                indice = 0
+                    for j in i:
+                        self.id_j_4 = []
+                        self.id_j_4 = j[0]
+                        cursor.execute(actualizar, (4, self.id_j_4))
                 conexion.commit()
                 
-                sql = "SELECT * FROM fichas WHERE fichas.palabra = %s"
+                sql = "SELECT * FROM fichas WHERE fichas.ficha_id = %s"
                 cursor.execute(sql, (28,))
                 resultado = cursor.fetchall()
                 
