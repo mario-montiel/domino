@@ -14,6 +14,7 @@ total_fichas = []
 fuenteconexion = pygame.font.SysFont("Arial", 30)
 Mi_imagen = pygame.image.load("imagenes_domino/main_menu.jpg")
 Mi_imagen2  = pygame.image.load("imagenes_domino/register.jpg")
+Mi_imagen3 = pygame.image.load("domino/board2.jpg")
 stabton = pygame.Rect(550,460,282,50)
 maus = pygame.Rect(0, 0, 25, 25)
 pantalla = 1
@@ -114,7 +115,6 @@ while True:
 					nombre_jugadores.append(text3)
 					nombre_jugadores.append(text4)
 					juego.fichas = set(fichas)
-					print(juego.fichas)
 					juego.repartir_fichas(1, total_fichas)
 					juego.repartir_fichas(2, total_fichas)
 					juego.repartir_fichas(3, total_fichas)
@@ -122,7 +122,12 @@ while True:
 					try:
 						db.ingresar_jugadores(nombre_jugadores)
 						db.asignar_fichas_db(2, juego.fichas_jugador1, juego.fichas_jugador2, juego.fichas_jugador3, juego.fichas_jugador4, fichas)
-						print("smn")
+						btoncomenzar2 = pygame.Rect(550000,460000,282,50)
+						pantalla = 3
+						input_box = pygame.Rect(520000, 260000, 340, 32)
+						input_box2 = pygame.Rect(520000,335000, 340, 32)
+						input_box3 = pygame.Rect(520000,410000, 340, 32)
+						input_box4 = pygame.Rect(520000,485000, 340, 32)
 					except:
 						print("error")
 				else:
@@ -191,4 +196,12 @@ while True:
 		input_box4.w = width
 		ventanta.blit(txt_surface4, (input_box4.x+5, input_box4.y+5))
 		pygame.draw.rect(ventanta, color4, input_box4, 2)
+	elif pantalla == 3:
+		ventanta.blit(Mi_imagen3, (0, 0))
+		while juego.iniciar_mula != 1:
+			turno = juego.poner_mula(total_fichas)
+		for event in pygame.event.get():
+			if event.type == QUIT:
+				pygame.quit()
+				sys.exit()
 	pygame.display.update()
