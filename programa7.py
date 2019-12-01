@@ -40,6 +40,8 @@ text3 = ''
 text4 = ''
 done = False
 
+turno = 0
+
 rand = random.randint(1,3)
 if int(rand) == 1:
 	pygame.mixer.music.load('mp3/soundfile_1.mp3')
@@ -122,6 +124,7 @@ while True:
 					try:
 						db.ingresar_jugadores(nombre_jugadores)
 						db.asignar_fichas_db(2, juego.fichas_jugador1, juego.fichas_jugador2, juego.fichas_jugador3, juego.fichas_jugador4, fichas)
+						turno = juego.poner_mula(total_fichas)
 						btoncomenzar2 = pygame.Rect(550000,460000,282,50)
 						pantalla = 3
 						input_box = pygame.Rect(520000, 260000, 340, 32)
@@ -198,8 +201,18 @@ while True:
 		pygame.draw.rect(ventanta, color4, input_box4, 2)
 	elif pantalla == 3:
 		ventanta.blit(Mi_imagen3, (0, 0))
-		while juego.iniciar_mula != 1:
-			turno = juego.poner_mula(total_fichas)
+		if turno == 1:
+			jugador = pygame.image.load("imagenes_domino/Jugador-1.png")
+			ventanta.blit(jugador, (0, 0))
+		elif turno == 2:
+			jugador = pygame.image.load("imagenes_domino/Jugador-2.png")
+			ventanta.blit(jugador, (0, 0))
+		elif turno == 3:
+			jugador = pygame.image.load("imagenes_domino/Jugador-3.png")
+			ventanta.blit(jugador, (0, 0))
+		elif turno == 4:
+			jugador = pygame.image.load("imagenes_domino/Jugador-4.png")
+			ventanta.blit(jugador, (0, 0))
 		for event in pygame.event.get():
 			if event.type == QUIT:
 				pygame.quit()
