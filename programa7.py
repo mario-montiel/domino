@@ -1,16 +1,23 @@
 import pygame, sys
 from pygame.locals import *
+from domino.juego import Juego
+from database.db import Conexion
 import random
 
+juego = Juego()
 pygame.init()
 ventanta = pygame.display.set_mode((1350,700))
 pygame.display.set_caption("El dominó mamalón")
+fichas = []
+total_fichas = []
 
+fuenteconexion = pygame.font.SysFont("Arial", 30)
 Mi_imagen = pygame.image.load("imagenes_domino/main_menu.jpg")
 Mi_imagen2  = pygame.image.load("imagenes_domino/register.jpg")
 stabton = pygame.Rect(550,460,282,50)
 maus = pygame.Rect(0, 0, 25, 25)
 pantalla = 1
+btoncomenzar2 = pygame.Rect(550000,460000,282,50)
 
 input_box = pygame.Rect(100,100, 140, 32)
 input_box2 = pygame.Rect(100,100, 140, 32)
@@ -48,6 +55,7 @@ elif int(rand) == 3:
 
 while True:
 	maus.left, maus.top = pygame.mouse.get_pos()
+	db = Conexion()
 	if pantalla == 1:
 		ventanta.blit(Mi_imagen, (0, 0))
 		for event in pygame.event.get():
@@ -57,6 +65,7 @@ while True:
 			elif event.type == pygame.MOUSEBUTTONDOWN:
 				if maus.colliderect(stabton):
 					stabton = pygame.Rect(100000,100000, 670, 50)
+					btoncomenzar2 = pygame.Rect(550,610,282,50)
 					pantalla = 2
 	elif pantalla == 2:
 		ventanta.blit(Mi_imagen2, (0, 0))
@@ -65,6 +74,13 @@ while True:
 		input_box2 = pygame.Rect(520,335, 340, 32)
 		input_box3 = pygame.Rect(520,410, 340, 32)
 		input_box4 = pygame.Rect(520,485, 340, 32)
+		try:
+			juego.mula = db.obtener_mula()
+			fichas = random.sample(db.database(1), k=28)
+			total_fichas = random.sample(db.database(1), k = 28)
+		except:
+			eltexto = fuenteconexion.render("!! NO SE ENCONTRÓ NINGUNA BASE DE DATOS !!", 0, (233,233,87))
+			ventanta.blit(eltexto,(400,50))
 
 		for event in pygame.event.get():
 			if event.type == QUIT:
@@ -91,6 +107,24 @@ while True:
 					active = False
 					active2 = False
 					active3 = False
+				elif maus.colliderect(btoncomenzar2):
+					nombre_jugadores = []
+					nombre_jugadores.append(text)
+					nombre_jugadores.append(text2)
+					nombre_jugadores.append(text3)
+					nombre_jugadores.append(text4)
+					juego.fichas = set(fichas)
+					print(juego.fichas)
+					juego.repartir_fichas(1, total_fichas)
+					juego.repartir_fichas(2, total_fichas)
+					juego.repartir_fichas(3, total_fichas)
+					juego.repartir_fichas(4, total_fichas)
+					try:
+						db.ingresar_jugadores(nombre_jugadores)
+						db.asignar_fichas_db(2, juego.fichas_jugador1, juego.fichas_jugador2, juego.fichas_jugador3, juego.fichas_jugador4, fichas)
+						print("smn")
+					except:
+						print("error")
 				else:
 					active = False
 					active2 = False

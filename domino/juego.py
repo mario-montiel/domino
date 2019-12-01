@@ -26,7 +26,6 @@ class Juego:
         # SE REPARTEN LAS FICHAS DEPENDIENDO EL NÚMERO DEL JUGADOR
         # print(fichas[0:7])
         for i in fichas:
-            print(i[4])
             if jugador == 1 and i[4] == 1:
                 self.fichas_jugador1.append(i)
                 print(self.fichas_jugador1)

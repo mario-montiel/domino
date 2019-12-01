@@ -30,18 +30,16 @@ class Conexion:
             print("Something went wrong: {}".format(err))
             
     def ingresar_jugadores(self, n_jugadores):
-        
         try:
             id = 1
             conexion = mysql.connector.connect(**self.db)
             cursor = conexion.cursor()
             actualizar = "UPDATE jugadores SET jugadores.jugador_nombre = %s WHERE jugadores.jugador_id = %s"
             for i in n_jugadores:
-                cursor.execute(actualizar, (i[0], id))
+                cursor.execute(actualizar, (i, id))
                 id += 1
                     
             conexion.commit()
-            print("asdfsadf")
         except mysql.connector.Error as err:
             print("Something went wrong: {}".format(err))
 
