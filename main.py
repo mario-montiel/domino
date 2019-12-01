@@ -47,14 +47,12 @@ try:
 except:
     print("valió vrga")
     
-while juego.iniciar_mula != 1:
-        turno = juego.poner_mula(total_fichas)
+# while juego.iniciar_mula != 1:
+turno = juego.poner_mula(total_fichas)
         
-if turno == 5:
-    turno = 1
+
 
 print("EMPEZARÁ CON EL TURNO DEL JUGADOR " + str(turno))
-
 # EMPEZAMOS A JUGAR UNA VEZ REPARTIDAS LAS FICHAS A CADA JUGADOR
 while juego.victoria != 6:
     
@@ -66,13 +64,13 @@ while juego.victoria != 6:
     poner_ficha = int(input("Seleccione la ficha que desea poner.... JUGADOR " + str(turno) + "\n"))
     if turno == 1:
          # ENVIAMOS LA POSICIÓN QUE DESEAMOS ELIMINAR Y EL JUGADOR
-        juego.poner_ficha(juego.fichas_jugador1[poner_ficha], turno)
+        juego.poner_ficha(juego.fichas_jugador1[0][poner_ficha], turno)
     elif turno == 2:
-        juego.poner_ficha(juego.fichas_jugador2[poner_ficha], turno)
+        juego.poner_ficha(juego.fichas_jugador2[0][poner_ficha], turno)
     elif turno == 3:
-        juego.poner_ficha(juego.fichas_jugador3[poner_ficha], turno)
+        juego.poner_ficha(juego.fichas_jugador3[0][poner_ficha], turno)
     elif turno == 4:
-        juego.poner_ficha(juego.fichas_jugador4[poner_ficha], turno)
+        juego.poner_ficha(juego.fichas_jugador4[0][poner_ficha], turno)
         
     juego.victoria()
     turno += 1

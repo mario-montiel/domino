@@ -52,7 +52,7 @@ class Conexion:
             indice = 0
             for i in jugador1:
                 # print("WOW")
-                # print(jugador1)
+                print(jugador1)
                 self.id_j_1.append(i)
             for i in jugador2:
                 self.id_j_2.append(i)

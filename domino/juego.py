@@ -24,65 +24,64 @@ class Juego:
     
     def repartir_fichas(self, jugador, fichas):
         # SE REPARTEN LAS FICHAS DEPENDIENDO EL NÚMERO DEL JUGADOR
-        # print(fichas[0:7])
+        print(fichas[0:7])
         if jugador == 1:
             self.fichas_jugador1.append(fichas[0:7])
-            # print(self.fichas_jugador1)
+            print(self.fichas_jugador1)
         elif jugador == 2:
             self.fichas_jugador2.append(fichas[7:14])
-            # print(self.fichas_jugador2)
+            print(self.fichas_jugador2)
         elif jugador == 3:
             self.fichas_jugador3.append(fichas[14:21])
-            # print(self.fichas_jugador3)
+            print(self.fichas_jugador3)
         elif jugador == 4:
             self.fichas_jugador4.append(fichas[21:28])
-            # print(self.fichas_jugador4)
+            print(self.fichas_jugador4)
             
         # for i in self.fichas_jugador1:
         #     print(i)
             
-        # print("FICHAS DEL JUGADOR 1: " + str(self.fichas_jugador1))
-        # print("FICHAS DEL JUGADOR 2: " + str(self.fichas_jugador2))
-        # print("FICHAS DEL JUGADOR 3: " + str(self.fichas_jugador3))
-        # print("FICHAS DEL JUGADOR 4: " + str(self.fichas_jugador4))
+        print("FICHAS DEL JUGADOR 1: " + str(self.fichas_jugador1))
+        print("FICHAS DEL JUGADOR 2: " + str(self.fichas_jugador2))
+        print("FICHAS DEL JUGADOR 3: " + str(self.fichas_jugador3))
+        print("FICHAS DEL JUGADOR 4: " + str(self.fichas_jugador4))
         
     def poner_mula(self, fichas):
-        
-        for i in self.fichas_jugador1:
+        for i in self.fichas_jugador1[0]:
             if i[0] == 28:
                 self.turno = i[4]
-                self.fichas_jugador1.remove(i)
+                self.fichas_jugador1[0].remove(i)
                 self.ultima_ficha_puesta = i
                 print("ÚLTIMA FICHA PUESTA: " + str(self.ultima_ficha_puesta))
                 self.iniciar_mula = 1
-                return i[4] +1
+                return 2
             
-        for i in self.fichas_jugador2:
+        for i in self.fichas_jugador2[0]:
             if i[0] == 28:
                 self.turno = i[4]
-                self.fichas_jugador2.remove(i)
+                self.fichas_jugador2[0].remove(i)
                 self.ultima_ficha_puesta = i
                 print("ÚLTIMA FICHA PUESTA: " + str(self.ultima_ficha_puesta))
                 self.iniciar_mula = 1
-                return i[4] +1
+                return 3
             
-        for i in self.fichas_jugador3:
+        for i in self.fichas_jugador3[0]:
             if i[0] == 28:
                 self.turno = i[4]
-                self.fichas_jugador3.remove(i)
+                self.fichas_jugador3[0].remove(i)
                 self.ultima_ficha_puesta = i
                 print("ÚLTIMA FICHA PUESTA: " + str(self.ultima_ficha_puesta))
                 self.iniciar_mula = 1
-                return i[4] +1
+                return 4
             
-        for i in self.fichas_jugador4:
+        for i in self.fichas_jugador4[0]:
             if i[0] == 28:
                 self.turno = i[4]
-                self.fichas_jugador4.remove(i)
+                self.fichas_jugador4[0].remove(i)
                 self.ultima_ficha_puesta = i
                 print("\nÚLTIMA FICHA PUESTA: " + str(self.ultima_ficha_puesta))
                 self.iniciar_mula = 1
-                return i[4] +1
+                return 1
         
     def poner_ficha(self, click, jugador):
         # COMPARO FICHA Y LA ELIMINO A LA VERGA!!!
