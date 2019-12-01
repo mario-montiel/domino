@@ -13,9 +13,11 @@ try:
     # OBTENER MULA
     juego.mula = db.obtener_mula()
     # OBTENGO DE LA CONSULTA TODAS LAS FICHAS Y LA GUARDO EN EL ARREGLO FICHAS DE FORMA ALEATORIA
-    fichas = random.sample(db.database(1), k=28)
+    fichas = (random.sample(db.database(1), k=28))
     #OBTENERMOS OTRA VEZ LAS FICHAS
-    total_fichas =  random.sample(db.database(1), k=28)
+    total_fichas =  db.database(1)
+    # xxx = db.obtener_ficha_id(3)
+    # print("PRUEBON ID FICHAS " + str(xxx))
 except:
     error
     
@@ -24,8 +26,8 @@ while indice != 5:
     nombre_jugadores = input("INGRESE EL NOMBRE DEL JUGADOR " + str(indice) + "\n")
     jugador.append(nombre_jugadores)
     # PASO LAS FICHAS ALEATORIAS OBTENIDAS DE LA BD A LA CLASE JUEGO
-    juego.fichas = set(fichas)
-    juego.repartir_fichas(indice, (fichas))
+    juego.fichas = random.sample(fichas, k=28)
+    juego.repartir_fichas(indice, fichas)
     indice += 1
     
 # print(juego.fichas_jugador1)
@@ -47,9 +49,8 @@ try:
 except:
     error
     
-while juego.iniciar_mula != 1:
-        turno = juego.poner_mula(total_fichas)
-        
+turno = juego.poner_mula(total_fichas)
+# print("JKAJAJAJ")
 if turno == 5:
     turno = 1
 

@@ -25,21 +25,20 @@ class Juego:
     def repartir_fichas(self, jugador, fichas):
         # SE REPARTEN LAS FICHAS DEPENDIENDO EL NÚMERO DEL JUGADOR
         # print(fichas[0:7])
-        if jugador == 1:
-            self.fichas_jugador1.append(fichas[0:7])
-            print(self.fichas_jugador1)
-        elif jugador == 2:
-            self.fichas_jugador2.append(fichas[7:14])
-            print(self.fichas_jugador2)
-        elif jugador == 3:
-            self.fichas_jugador3.append(fichas[14:21])
-            print(self.fichas_jugador3)
-        elif jugador == 4:
-            self.fichas_jugador4.append(fichas[21:28])
-            print(self.fichas_jugador4)
-            
-        for i in self.fichas_jugador1:
-            print(i)
+        for i in fichas:
+            print(i[4])
+            if jugador == 1 and i[4] == 1:
+                self.fichas_jugador1.append(i)
+                print(self.fichas_jugador1)
+            elif jugador == 2 and i[4] == 2:
+                self.fichas_jugador2.append(i)
+                print(self.fichas_jugador2)
+            elif jugador == 3 and i[4] == 3:
+                self.fichas_jugador3.append(i)
+                print(self.fichas_jugador3)
+            elif jugador == 4 and i[4] == 4:
+                self.fichas_jugador4.append(i)
+                print(self.fichas_jugador4)
             
         # print("FICHAS DEL JUGADOR 1: " + str(self.fichas_jugador1))
         # print("FICHAS DEL JUGADOR 2: " + str(self.fichas_jugador2))
@@ -47,7 +46,7 @@ class Juego:
         # print("FICHAS DEL JUGADOR 4: " + str(self.fichas_jugador4))
         
     def poner_mula(self, fichas):
-        
+        # print(fichas)
         for i in self.fichas_jugador1:
             if i[0] == 28:
                 self.turno = i[4]
@@ -78,6 +77,7 @@ class Juego:
         for i in self.fichas_jugador4:
             if i[0] == 28:
                 self.turno = i[4]
+                # print(i[])
                 self.fichas_jugador4.remove(i)
                 self.ultima_ficha_puesta = i
                 print("\nÚLTIMA FICHA PUESTA: " + str(self.ultima_ficha_puesta))

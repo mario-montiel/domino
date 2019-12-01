@@ -30,7 +30,7 @@ class Conexion:
             print("Something went wrong: {}".format(err))
             
     def ingresar_jugadores(self, n_jugadores):
-        print("asdfsadf")
+        
         try:
             id = 1
             conexion = mysql.connector.connect(**self.db)
@@ -41,7 +41,7 @@ class Conexion:
                 id += 1
                     
             conexion.commit()
-                
+            print("asdfsadf")
         except mysql.connector.Error as err:
             print("Something went wrong: {}".format(err))
 
@@ -51,8 +51,6 @@ class Conexion:
             cursor = conexion.cursor()
             indice = 0
             for i in jugador1:
-                print("WOW")
-                print(jugador1)
                 self.id_j_1.append(i)
             for i in jugador2:
                 self.id_j_2.append(i)
@@ -64,10 +62,9 @@ class Conexion:
             if consulta == 2:
                 actualizar = "UPDATE fichas SET fichas.jugador_id = %s WHERE fichas.ficha_id = %s"
                 
-                
                 for i in self.id_j_1:
                     for j in i:
-                        print(j)
+                        # print(j)
                         self.id_j_1 = []
                         self.id_j_1 = j[0]
                         cursor.execute(actualizar, (1, j[0]))
@@ -113,9 +110,9 @@ class Conexion:
         except mysql.connector.Error as err:
             print("Something went wrong: {}".format(err))
             
-    def poner_ficha(self, ficha_seleccionada):
-        try:
-            print("AAAAAAAAA" + str(ficha_seleccionada))
+    # def poner_ficha(self, ficha_seleccionada):
+    #     try:
+    #         print("AAAAAAAAA" + str(ficha_seleccionada))
             # consulta = "select * from fichas"
             # cursor.execute(consulta)
             # resultado = cursor.fetchall()
@@ -126,5 +123,24 @@ class Conexion:
             #         cursor.execute(update, (1, self.id_j_1[indice]))
             #         indice += 1
                 
+        except mysql.connector.Error as err:
+            print("Something went wrong: {}".format(err))
+            
+            
+            
+# PYGAME MAN
+
+    def obtener_ficha_id(self, consulta):
+        try:
+            conexion = mysql.connector.connect(**self.db)
+            cursor = conexion.cursor()
+            
+
+            if consulta == 3:
+                consulta = "select fichas.ficha_id from fichas"
+                cursor.execute(consulta)
+                resultado = cursor.fetchall()
+                conexion.commit()
+                return resultado
         except mysql.connector.Error as err:
             print("Something went wrong: {}".format(err))
