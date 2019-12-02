@@ -266,6 +266,71 @@ while True:
 			elif event.type == MOUSEBUTTONDOWN:
 				for x in todosloscuadros:
 					if maus.colliderect(x):
-						print(str(maus.left))
-						print(str(maus.top))
+						if maus.left < 660:
+							if turno == 1:
+								juego.poner_ficha(juego.fichas_jugador1[0], turno)
+							elif turno == 2:
+								juego.poner_ficha(juego.fichas_jugador2[0], turno)
+							elif turno == 3:
+								juego.poner_ficha(juego.fichas_jugador3[0], turno)
+							elif turno == 4:
+								juego.poner_ficha(juego.fichas_jugador4[0], turno)
+						elif maus.left < 720 and maus.left > 660:
+							if turno == 1:
+								juego.poner_ficha(juego.fichas_jugador1[1], turno)
+							elif turno == 2:
+								juego.poner_ficha(juego.fichas_jugador2[1], turno)
+							elif turno == 3:
+								juego.poner_ficha(juego.fichas_jugador3[1], turno)
+							elif turno == 4:
+								juego.poner_ficha(juego.fichas_jugador4[1], turno)
+						elif maus.left < 780 and maus.left > 720:
+							if turno == 1:
+								juego.poner_ficha(juego.fichas_jugador1[2], turno)
+							elif turno == 2:
+								juego.poner_ficha(juego.fichas_jugador2[2], turno)
+							elif turno == 3:
+								juego.poner_ficha(juego.fichas_jugador3[2], turno)
+							elif turno == 4:
+								juego.poner_ficha(juego.fichas_jugador4[2], turno)
+						elif maus.left < 840 and maus.left > 780:
+							if turno == 1:
+								juego.poner_ficha(juego.fichas_jugador1[3], turno)
+							elif turno == 2:
+								juego.poner_ficha(juego.fichas_jugador2[3], turno)
+							elif turno == 3:
+								juego.poner_ficha(juego.fichas_jugador3[3], turno)
+							elif turno == 4:
+								juego.poner_ficha(juego.fichas_jugador4[3], turno)
+						elif maus.left < 900 and maus.left > 840:
+							if turno == 1:
+								juego.poner_ficha(juego.fichas_jugador1[4], turno)
+							elif turno == 2:
+								juego.poner_ficha(juego.fichas_jugador2[4], turno)
+							elif turno == 3:
+								juego.poner_ficha(juego.fichas_jugador3[4], turno)
+							elif turno == 4:
+								juego.poner_ficha(juego.fichas_jugador4[4], turno)
+						elif maus.left < 960 and maus.left > 900:
+							if turno == 1:
+								juego.poner_ficha(juego.fichas_jugador1[5], turno)
+							elif turno == 2:
+								juego.poner_ficha(juego.fichas_jugador2[5], turno)
+							elif turno == 3:
+								juego.poner_ficha(juego.fichas_jugador3[5], turno)
+							elif turno == 4:
+								juego.poner_ficha(juego.fichas_jugador4[5], turno)
+						elif maus.left < 1020 and maus.left > 960:
+							if turno == 1:
+								juego.poner_ficha(juego.fichas_jugador1[6], turno)
+							elif turno == 2:
+								juego.poner_ficha(juego.fichas_jugador2[6], turno)
+							elif turno == 3:
+								juego.poner_ficha(juego.fichas_jugador3[6], turno)
+							elif turno == 4:
+								juego.poner_ficha(juego.fichas_jugador4[6], turno)
+						juego.victoria()
+						turno += 1
+						if turno == 5:
+							turno = 1
 	pygame.display.update()
