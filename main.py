@@ -13,9 +13,11 @@ try:
     # OBTENER MULA
     juego.mula = db.obtener_mula()
     # OBTENGO DE LA CONSULTA TODAS LAS FICHAS Y LA GUARDO EN EL ARREGLO FICHAS DE FORMA ALEATORIA
-    fichas = random.sample(db.database(1), k=28)
+    fichas = (random.sample(db.database(1), k=28))
     #OBTENERMOS OTRA VEZ LAS FICHAS
-    total_fichas =  random.sample(db.database(1), k=28)
+    total_fichas =  db.database(1)
+    # xxx = db.obtener_ficha_id(3)
+    # print("PRUEBON ID FICHAS " + str(xxx))
 except:
     error
     
@@ -24,8 +26,8 @@ while indice != 5:
     nombre_jugadores = input("INGRESE EL NOMBRE DEL JUGADOR " + str(indice) + "\n")
     jugador.append(nombre_jugadores)
     # PASO LAS FICHAS ALEATORIAS OBTENIDAS DE LA BD A LA CLASE JUEGO
-    juego.fichas = set(fichas)
-    juego.repartir_fichas(indice, (fichas))
+    juego.fichas = random.sample(fichas, k=28)
+    juego.repartir_fichas(indice, fichas)
     indice += 1
     
 # print(juego.fichas_jugador1)
@@ -47,9 +49,10 @@ try:
 except:
     print("valió vrga")
     
-# while juego.iniciar_mula != 1:
 turno = juego.poner_mula(total_fichas)
-        
+# print("JKAJAJAJ")
+if turno == 5:
+    turno = 1
 
 
 print("EMPEZARÁ CON EL TURNO DEL JUGADOR " + str(turno))
@@ -64,13 +67,13 @@ while juego.victoria != 6:
     poner_ficha = int(input("Seleccione la ficha que desea poner.... JUGADOR " + str(turno) + "\n"))
     if turno == 1:
          # ENVIAMOS LA POSICIÓN QUE DESEAMOS ELIMINAR Y EL JUGADOR
-        juego.poner_ficha(juego.fichas_jugador1[0][poner_ficha], turno)
+        juego.poner_ficha(juego.fichas_jugador1[poner_ficha], turno)
     elif turno == 2:
-        juego.poner_ficha(juego.fichas_jugador2[0][poner_ficha], turno)
+        juego.poner_ficha(juego.fichas_jugador2[poner_ficha], turno)
     elif turno == 3:
-        juego.poner_ficha(juego.fichas_jugador3[0][poner_ficha], turno)
+        juego.poner_ficha(juego.fichas_jugador3[poner_ficha], turno)
     elif turno == 4:
-        juego.poner_ficha(juego.fichas_jugador4[0][poner_ficha], turno)
+        juego.poner_ficha(juego.fichas_jugador4[poner_ficha], turno)
         
     juego.victoria()
     turno += 1

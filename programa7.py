@@ -201,20 +201,71 @@ while True:
 		pygame.draw.rect(ventanta, color4, input_box4, 2)
 	elif pantalla == 3:
 		ventanta.blit(Mi_imagen3, (0, 0))
+		todosloscuadros = []
 		if turno == 1:
 			jugador = pygame.image.load("imagenes_domino/Jugador-1.png")
 			ventanta.blit(jugador, (0, 0))
+			fichas = juego.fichas_jugador1
+			posicionesx = 600
+			for x in fichas:
+				fichaj1 = pygame.image.load("domino/piezas_domino/" + str(x[0]) + ".jpg")
+				ventanta.blit(fichaj1, (posicionesx, 0))
+				cuadro = pygame.Rect(posicionesx, 2, 60, 50)
+				cuadro2 = pygame.Rect(posicionesx, 57, 60, 50)
+				todosloscuadros.append(cuadro)
+				todosloscuadros.append(cuadro2)
+				posicionesx += 60
 		elif turno == 2:
 			jugador = pygame.image.load("imagenes_domino/Jugador-2.png")
 			ventanta.blit(jugador, (0, 0))
+			fichas = juego.fichas_jugador2
+			posicionesx = 600
+			for x in fichas:
+				fichaj1 = pygame.image.load("domino/piezas_domino/" + str(x[0]) + ".jpg")
+				ventanta.blit(fichaj1, (posicionesx, 0))
+				cuadro = pygame.Rect(posicionesx, 2, 60, 50)
+				cuadro2 = pygame.Rect(posicionesx, 57, 60, 50)
+				todosloscuadros.append(cuadro)
+				todosloscuadros.append(cuadro2)
+				posicionesx += 60
 		elif turno == 3:
 			jugador = pygame.image.load("imagenes_domino/Jugador-3.png")
 			ventanta.blit(jugador, (0, 0))
+			fichas = juego.fichas_jugador3
+			posicionesx = 600
+			for x in fichas:
+				fichaj1 = pygame.image.load("domino/piezas_domino/" + str(x[0]) + ".jpg")
+				ventanta.blit(fichaj1, (posicionesx, 0))
+				cuadro = pygame.Rect(posicionesx, 2, 60, 50)
+				cuadro2 = pygame.Rect(posicionesx, 57, 60, 50)
+				todosloscuadros.append(cuadro)
+				todosloscuadros.append(cuadro2)
+				posicionesx += 60
 		elif turno == 4:
 			jugador = pygame.image.load("imagenes_domino/Jugador-4.png")
 			ventanta.blit(jugador, (0, 0))
+			fichas = juego.fichas_jugador4
+			posicionesx = 600
+			for x in fichas:
+				fichaj1 = pygame.image.load("domino/piezas_domino/" + str(x[0]) + ".jpg")
+				ventanta.blit(fichaj1, (posicionesx, 0))
+				cuadro = pygame.Rect(posicionesx, 2, 60, 50)
+				cuadro2 = pygame.Rect(posicionesx, 57, 60, 50)
+				todosloscuadros.append(cuadro)
+				todosloscuadros.append(cuadro2)
+				posicionesx += 60
+		posicionesx = 650
+		yaponidas = juego.fichaseliminadas
+		for x in yaponidas:
+			ficha2 = pygame.image.load("domino/piezas_domino/" + str(x[0]) + ".jpg")
+			ventanta.blit(ficha2, (posicionesx, 200))
 		for event in pygame.event.get():
 			if event.type == QUIT:
 				pygame.quit()
 				sys.exit()
+			elif event.type == MOUSEBUTTONDOWN:
+				for x in todosloscuadros:
+					if maus.colliderect(x):
+						print(str(maus.left))
+						print(str(maus.top))
 	pygame.display.update()

@@ -7,6 +7,7 @@ class Juego:
     fichas_jugador3 = []
     fichas_jugador4 = []
     ultima_ficha_puesta = []
+    fichaseliminadas = []
     # puntuacion_j_1 = 0
     # puntuacion_j_2 = 0
     # puntuacion_j_3 = 0
@@ -24,22 +25,20 @@ class Juego:
     
     def repartir_fichas(self, jugador, fichas):
         # SE REPARTEN LAS FICHAS DEPENDIENDO EL NÚMERO DEL JUGADOR
-        print(fichas[0:7])
-        if jugador == 1:
-            self.fichas_jugador1.append(fichas[0:7])
-            print(self.fichas_jugador1)
-        elif jugador == 2:
-            self.fichas_jugador2.append(fichas[7:14])
-            print(self.fichas_jugador2)
-        elif jugador == 3:
-            self.fichas_jugador3.append(fichas[14:21])
-            print(self.fichas_jugador3)
-        elif jugador == 4:
-            self.fichas_jugador4.append(fichas[21:28])
-            print(self.fichas_jugador4)
-            
-        # for i in self.fichas_jugador1:
-        #     print(i)
+        # print(fichas[0:7])
+        for i in fichas:
+            if jugador == 1 and i[4] == 1:
+                self.fichas_jugador1.append(i)
+                print(self.fichas_jugador1)
+            elif jugador == 2 and i[4] == 2:
+                self.fichas_jugador2.append(i)
+                print(self.fichas_jugador2)
+            elif jugador == 3 and i[4] == 3:
+                self.fichas_jugador3.append(i)
+                print(self.fichas_jugador3)
+            elif jugador == 4 and i[4] == 4:
+                self.fichas_jugador4.append(i)
+                print(self.fichas_jugador4)
             
         print("FICHAS DEL JUGADOR 1: " + str(self.fichas_jugador1))
         print("FICHAS DEL JUGADOR 2: " + str(self.fichas_jugador2))
@@ -47,38 +46,44 @@ class Juego:
         print("FICHAS DEL JUGADOR 4: " + str(self.fichas_jugador4))
         
     def poner_mula(self, fichas):
-        for i in self.fichas_jugador1[0]:
+        # print(fichas)
+        for i in self.fichas_jugador1:
             if i[0] == 28:
                 self.turno = i[4]
-                self.fichas_jugador1[0].remove(i)
+                self.fichas_jugador1.remove(i)
                 self.ultima_ficha_puesta = i
+                self.fichaseliminadas.append(i)
                 print("ÚLTIMA FICHA PUESTA: " + str(self.ultima_ficha_puesta))
                 self.iniciar_mula = 1
                 return 2
             
-        for i in self.fichas_jugador2[0]:
+        for i in self.fichas_jugador2:
             if i[0] == 28:
                 self.turno = i[4]
-                self.fichas_jugador2[0].remove(i)
+                self.fichas_jugador2.remove(i)
                 self.ultima_ficha_puesta = i
+                self.fichaseliminadas.append(i)
                 print("ÚLTIMA FICHA PUESTA: " + str(self.ultima_ficha_puesta))
                 self.iniciar_mula = 1
                 return 3
             
-        for i in self.fichas_jugador3[0]:
+        for i in self.fichas_jugador3:
             if i[0] == 28:
                 self.turno = i[4]
-                self.fichas_jugador3[0].remove(i)
+                self.fichas_jugador3.remove(i)
                 self.ultima_ficha_puesta = i
+                self.fichaseliminadas.append(i)
                 print("ÚLTIMA FICHA PUESTA: " + str(self.ultima_ficha_puesta))
                 self.iniciar_mula = 1
                 return 4
             
-        for i in self.fichas_jugador4[0]:
+        for i in self.fichas_jugador4:
             if i[0] == 28:
                 self.turno = i[4]
-                self.fichas_jugador4[0].remove(i)
+                # print(i[])
+                self.fichas_jugador4.remove(i)
                 self.ultima_ficha_puesta = i
+                self.fichaseliminadas.append(i)
                 print("\nÚLTIMA FICHA PUESTA: " + str(self.ultima_ficha_puesta))
                 self.iniciar_mula = 1
                 return 1
@@ -87,6 +92,7 @@ class Juego:
         # COMPARO FICHA Y LA ELIMINO A LA VERGA!!!
         if click[2] == self.ultima_ficha_puesta[2] or click[3] == self.ultima_ficha_puesta[3] or click[2] == self.ultima_ficha_puesta[3] or click[3] == self.ultima_ficha_puesta[2]:
             self.ultima_ficha_puesta = click
+            self.fichaseliminadas.append(click)
             print("FICHA CORRECTA")
             print("ÚLTIMA FICHA PUESTA: " + str(self.ultima_ficha_puesta))
             if jugador == 1:
