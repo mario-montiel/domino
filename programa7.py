@@ -24,6 +24,7 @@ input_box = pygame.Rect(100,100, 140, 32)
 input_box2 = pygame.Rect(100,100, 140, 32)
 input_box3 = pygame.Rect(100,100, 140, 32)
 input_box4 = pygame.Rect(100,100, 140, 32)
+btonaceptar = pygame.Rect(600000,5000000,100,50)
 color_inactive = pygame.Color(228,201,0)
 color_active = pygame.Color(255,240,133)
 color = color_inactive
@@ -40,7 +41,8 @@ text3 = ''
 text4 = ''
 done = False
 
-turno = 0
+# turno = 0
+# fichaaguardar = None
 
 rand = random.randint(1,3)
 if int(rand) == 1:
@@ -266,7 +268,11 @@ while True:
 			elif event.type == MOUSEBUTTONDOWN:
 				for x in todosloscuadros:
 					if maus.colliderect(x):
+						print("hola")
 						if maus.left < 660:
+							fichaaguardar = 0
+							btonaceptar = pygame.Rect(600,5,100,50)
+							pygame.draw.rect(ventanta,(0,255,0), btonaceptar)
 							if turno == 1:
 								juego.poner_ficha(juego.fichas_jugador1[0], turno)
 							elif turno == 2:
@@ -276,6 +282,9 @@ while True:
 							elif turno == 4:
 								juego.poner_ficha(juego.fichas_jugador4[0], turno)
 						elif maus.left < 720 and maus.left > 660:
+							fichaaguardar = 1
+							btonaceptar = pygame.Rect(600,5,100,50)
+							pygame.draw.rect(ventanta,(0,255,0), btonaceptar)
 							if turno == 1:
 								juego.poner_ficha(juego.fichas_jugador1[1], turno)
 							elif turno == 2:
@@ -285,6 +294,9 @@ while True:
 							elif turno == 4:
 								juego.poner_ficha(juego.fichas_jugador4[1], turno)
 						elif maus.left < 780 and maus.left > 720:
+							fichaaguardar = 2
+							btonaceptar = pygame.Rect(600,5,100,50)
+							pygame.draw.rect(ventanta,(0,255,0), btonaceptar)
 							if turno == 1:
 								juego.poner_ficha(juego.fichas_jugador1[2], turno)
 							elif turno == 2:
@@ -294,6 +306,9 @@ while True:
 							elif turno == 4:
 								juego.poner_ficha(juego.fichas_jugador4[2], turno)
 						elif maus.left < 840 and maus.left > 780:
+							fichaaguardar = 3
+							btonaceptar = pygame.Rect(600,5,100,50)
+							pygame.draw.rect(ventanta,(0,255,0), btonaceptar)
 							if turno == 1:
 								juego.poner_ficha(juego.fichas_jugador1[3], turno)
 							elif turno == 2:
@@ -303,6 +318,9 @@ while True:
 							elif turno == 4:
 								juego.poner_ficha(juego.fichas_jugador4[3], turno)
 						elif maus.left < 900 and maus.left > 840:
+							fichaaguardar = 4
+							btonaceptar = pygame.Rect(600,5,100,50)
+							pygame.draw.rect(ventanta,(0,255,0), btonaceptar)
 							if turno == 1:
 								juego.poner_ficha(juego.fichas_jugador1[4], turno)
 							elif turno == 2:
@@ -312,6 +330,9 @@ while True:
 							elif turno == 4:
 								juego.poner_ficha(juego.fichas_jugador4[4], turno)
 						elif maus.left < 960 and maus.left > 900:
+							fichaaguardar = 5
+							btonaceptar = pygame.Rect(600,5,100,50)
+							pygame.draw.rect(ventanta,(0,255,0), btonaceptar)
 							if turno == 1:
 								juego.poner_ficha(juego.fichas_jugador1[5], turno)
 							elif turno == 2:
@@ -321,6 +342,9 @@ while True:
 							elif turno == 4:
 								juego.poner_ficha(juego.fichas_jugador4[5], turno)
 						elif maus.left < 1020 and maus.left > 960:
+							fichaaguardar = 6
+							btonaceptar = pygame.Rect(600,5,100,50)
+							pygame.draw.rect(ventanta,(0,255,0), btonaceptar)
 							if turno == 1:
 								juego.poner_ficha(juego.fichas_jugador1[6], turno)
 							elif turno == 2:
@@ -329,8 +353,18 @@ while True:
 								juego.poner_ficha(juego.fichas_jugador3[6], turno)
 							elif turno == 4:
 								juego.poner_ficha(juego.fichas_jugador4[6], turno)
-						juego.victoria()
-						turno += 1
-						if turno == 5:
-							turno = 1
+					juego.victoria()
+					turno += 1
+					if turno == 5:
+						turno = 1
+				# if maus.colliderect(btonaceptar):
+				# 	btonaceptar = pygame.Rect(600000,5000000,100,50)
+				# 	if turno == 1:
+				# 		juego.poner_ficha(juego.fichas_jugador1[fichaaguardar], turno)
+				# 	elif turno == 2:
+				# 		juego.poner_ficha(juego.fichas_jugador2[fichaaguardar], turno)
+				# 	elif turno == 3:
+				# 		juego.poner_ficha(juego.fichas_jugador3[fichaaguardar], turno)
+				# 	elif turno == 4:
+				# 		juego.poner_ficha(juego.fichas_jugador4[fichaaguardar], turno)
 	pygame.display.update()
