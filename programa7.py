@@ -135,6 +135,7 @@ while True:
 						input_box4 = pygame.Rect(520000,485000, 340, 32)
 					except:
 						print("error")
+					# 
 				else:
 					active = False
 					active2 = False
@@ -206,12 +207,14 @@ while True:
 		tiempo += timer_resolution
 		ventanta.blit(Mi_imagen3, (0, 0))
 		todosloscuadros = []
+		contadordefichas = 0
 		if turno == 1:
 			jugador = pygame.image.load("imagenes_domino/Jugador-1.png")
 			ventanta.blit(jugador, (0, 0))
 			fichas = juego.fichas_jugador1
 			posicionesx = 600
 			for x in fichas:
+				contadordefichas += 1
 				fichaj1 = pygame.image.load("domino/piezas_domino/" + str(x[0]) + ".jpg")
 				ventanta.blit(fichaj1, (posicionesx, 0))
 				cuadro = pygame.Rect(posicionesx, 2, 60, 50)
@@ -225,6 +228,7 @@ while True:
 			fichas = juego.fichas_jugador2
 			posicionesx = 600
 			for x in fichas:
+				contadordefichas += 1
 				fichaj1 = pygame.image.load("domino/piezas_domino/" + str(x[0]) + ".jpg")
 				ventanta.blit(fichaj1, (posicionesx, 0))
 				cuadro = pygame.Rect(posicionesx, 2, 60, 50)
@@ -238,6 +242,7 @@ while True:
 			fichas = juego.fichas_jugador3
 			posicionesx = 600
 			for x in fichas:
+				contadordefichas += 1
 				fichaj1 = pygame.image.load("domino/piezas_domino/" + str(x[0]) + ".jpg")
 				ventanta.blit(fichaj1, (posicionesx, 0))
 				cuadro = pygame.Rect(posicionesx, 2, 60, 50)
@@ -251,6 +256,7 @@ while True:
 			fichas = juego.fichas_jugador4
 			posicionesx = 600
 			for x in fichas:
+				contadordefichas += 1
 				fichaj1 = pygame.image.load("domino/piezas_domino/" + str(x[0]) + ".jpg")
 				ventanta.blit(fichaj1, (posicionesx, 0))
 				cuadro = pygame.Rect(posicionesx, 2, 60, 50)
@@ -263,12 +269,13 @@ while True:
 		for x in yaponidas:
 			ficha2 = pygame.image.load("domino/piezas_domino/" + str(x[0]) + ".jpg")
 			ventanta.blit(ficha2, (posicionesx, 200))
-			posicionesx += 150
+			posicionesx += 20
 		for event in pygame.event.get():
 			if event.type == QUIT:
 				pygame.quit()
 				sys.exit()
 			elif event.type == MOUSEBUTTONDOWN:
+				print(contadordefichas)
 				if(tiempo > 500):
 					tiempo = 0
 					for x in todosloscuadros:

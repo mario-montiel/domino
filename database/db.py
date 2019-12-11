@@ -61,26 +61,13 @@ class Conexion:
                 actualizar = "UPDATE fichas SET fichas.jugador_id = %s WHERE fichas.ficha_id = %s"
                 
                 for i in self.id_j_1:
-                    for j in i:
-                        # print(j)
-                        self.id_j_1 = []
-                        self.id_j_1 = j
-                        cursor.execute(actualizar, (1, self.id_j_1))
+                    cursor.execute(actualizar, (1, i[0]))
                 for i in self.id_j_2:
-                    for j in i:
-                        self.id_j_2 = []
-                        self.id_j_2 = j
-                        cursor.execute(actualizar, (2, self.id_j_2))
+                    cursor.execute(actualizar, (2, i[0]))
                 for i in self.id_j_3:
-                    for j in i:
-                        self.id_j_3 = []
-                        self.id_j_3 = j
-                        cursor.execute(actualizar, (3, self.id_j_3))
+                    cursor.execute(actualizar, (3, i[0]))
                 for i in self.id_j_4:
-                    for j in i:
-                        self.id_j_4 = []
-                        self.id_j_4 = j
-                        cursor.execute(actualizar, (4, self.id_j_4))
+                    cursor.execute(actualizar, (4, i[0]))
                 conexion.commit()
                 
                 sql = "SELECT * FROM fichas WHERE fichas.ficha_id = %s"
