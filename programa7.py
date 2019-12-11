@@ -265,11 +265,24 @@ while True:
 				todosloscuadros.append(cuadro2)
 				posicionesx += 60
 		posicionesx = 650
-		yaponidas = juego.fichaseliminadas
-		for x in yaponidas:
+		# yaponidas = juego.fichaseliminadas
+		# for x in yaponidas:
+		# 	ficha2 = pygame.image.load("domino/piezas_domino/" + str(x[0]) + ".jpg")
+		# 	ventanta.blit(ficha2, (posicionesx, 200))
+		# 	posicionesx += 20
+		izquierda = juego.izquierda
+		derecha = juego.derecha
+		ficha2 = pygame.image.load("domino/piezas_domino/28.jpg")
+		ventanta.blit(ficha2, (posicionesx, 200))
+		for x in izquierda:
+			posicionesx -= 50
 			ficha2 = pygame.image.load("domino/piezas_domino/" + str(x[0]) + ".jpg")
 			ventanta.blit(ficha2, (posicionesx, 200))
-			posicionesx += 20
+		posicionesx = 650
+		for x in derecha:
+			posicionesx += 50
+			ficha2 = pygame.image.load("domino/piezas_domino/" + str(x[0]) + ".jpg")
+			ventanta.blit(ficha2, (posicionesx, 200))
 		for event in pygame.event.get():
 			if event.type == QUIT:
 				pygame.quit()
@@ -280,7 +293,6 @@ while True:
 					tiempo = 0
 					for x in todosloscuadros:
 						if maus.colliderect(x):
-							print("hola")
 							if maus.left < 660:
 								fichaaguardar = 0
 								if turno == 1:

@@ -7,6 +7,9 @@ class Juego:
     fichas_jugador3 = []
     fichas_jugador4 = []
     ultima_ficha_puesta = []
+    izquierda = []
+    derecha = []
+    fichamentira = [6,6]
     fichaseliminadas = []
     # puntuacion_j_1 = 0
     # puntuacion_j_2 = 0
@@ -92,11 +95,9 @@ class Juego:
         
     def poner_ficha(self, click, jugador):
         # COMPARO FICHA Y LA ELIMINO A LA VERGA!!!
-        if click[2] == self.ultima_ficha_puesta[2] or click[3] == self.ultima_ficha_puesta[3] or click[2] == self.ultima_ficha_puesta[3] or click[3] == self.ultima_ficha_puesta[2]:
-            self.ultima_ficha_puesta = click
-            self.fichaseliminadas.append(click)
-            print("FICHA CORRECTA")
-            print("ÚLTIMA FICHA PUESTA: " + str(self.ultima_ficha_puesta))
+        if click[2] == self.fichamentira[0]:
+            self.izquierda.append(click)
+            self.fichamentira[0] = click[3]
             if jugador == 1:
                 self.fichas_jugador1.remove(click)
             elif jugador == 2:
@@ -105,9 +106,62 @@ class Juego:
                 self.fichas_jugador3.remove(click)
             elif jugador == 4:
                 self.fichas_jugador4.remove(click)
-        else:
-            print("FICHA INCORRECTA")
-            print("ÚLTIMA FICHA PUESTA: " + str(self.ultima_ficha_puesta))
+        elif click[2] == self.fichamentira[1]:
+            self.derecha.append(click)
+            self.fichamentira[1] = click[3]
+            if jugador == 1:
+                self.fichas_jugador1.remove(click)
+            elif jugador == 2:
+                self.fichas_jugador2.remove(click)
+            elif jugador == 3:
+                self.fichas_jugador3.remove(click)
+            elif jugador == 4:
+                self.fichas_jugador4.remove(click)
+        elif click[3] == self.fichamentira[0]:
+            self.izquierda.append(click)
+            self.fichamentira[0] = click[2]
+            if jugador == 1:
+                self.fichas_jugador1.remove(click)
+            elif jugador == 2:
+                self.fichas_jugador2.remove(click)
+            elif jugador == 3:
+                self.fichas_jugador3.remove(click)
+            elif jugador == 4:
+                self.fichas_jugador4.remove(click)
+        elif click[3] == self.fichamentira[1]:
+            self.derecha.append(click)
+            self.fichamentira[1] = click[2]
+            if jugador == 1:
+                self.fichas_jugador1.remove(click)
+            elif jugador == 2:
+                self.fichas_jugador2.remove(click)
+            elif jugador == 3:
+                self.fichas_jugador3.remove(click)
+            elif jugador == 4:
+                self.fichas_jugador4.remove(click)
+        print(str(self.fichamentira))
+        cizquierda = ""
+        cderecha = ""
+        for x in self.izquierda:
+            cizquierda = cizquierda + str(x)
+        for x in self.derecha:
+            cderecha = cderecha + str(x)
+        # if click[2] == self.ultima_ficha_puesta[2] or click[3] == self.ultima_ficha_puesta[3] or click[2] == self.ultima_ficha_puesta[3] or click[3] == self.ultima_ficha_puesta[2]:
+        #     self.ultima_ficha_puesta = click
+        #     self.fichaseliminadas.append(click)
+        #     print("FICHA CORRECTA")
+        #     print("ÚLTIMA FICHA PUESTA: " + str(self.ultima_ficha_puesta))
+        #     if jugador == 1:
+        #         self.fichas_jugador1.remove(click)
+        #     elif jugador == 2:
+        #         self.fichas_jugador2.remove(click)
+        #     elif jugador == 3:
+        #         self.fichas_jugador3.remove(click)
+        #     elif jugador == 4:
+        #         self.fichas_jugador4.remove(click)
+        # else:
+        #     print("FICHA INCORRECTA")
+        #     print("ÚLTIMA FICHA PUESTA: " + str(self.ultima_ficha_puesta))
             
         
         
