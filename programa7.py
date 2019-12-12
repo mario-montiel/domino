@@ -40,9 +40,11 @@ text2 = ''
 text3 = ''
 text4 = ''
 done = False
+ganar = "no"
 
 # turno = 0
 # fichaaguardar = None
+clock = pygame.time.Clock()
 
 rand = random.randint(1,3)
 if int(rand) == 1:
@@ -59,6 +61,7 @@ elif int(rand) == 3:
 	pygame.mixer.init()
 
 while True:
+	clock.tick(30)
 	maus.left, maus.top = pygame.mouse.get_pos()
 	db = Conexion()
 	if pantalla == 1:
@@ -222,6 +225,10 @@ while True:
 				todosloscuadros.append(cuadro)
 				todosloscuadros.append(cuadro2)
 				posicionesx += 60
+			if ganar == "si":
+				fuente = pygame.font.Font(None,50)
+				eltexto1 = fuente.render("ganó el jugador 4!!", 0, (233,233,87))
+				ventanta.blit(eltexto1,(550,400))
 		elif turno == 2:
 			jugador = pygame.image.load("imagenes_domino/Jugador-2.png")
 			ventanta.blit(jugador, (0, 0))
@@ -236,6 +243,10 @@ while True:
 				todosloscuadros.append(cuadro)
 				todosloscuadros.append(cuadro2)
 				posicionesx += 60
+			if ganar == "si":
+				fuente = pygame.font.Font(None,50)
+				eltexto1 = fuente.render("ganó el jugador 1!!", 0, (233,233,87))
+				ventanta.blit(eltexto1,(550,400))
 		elif turno == 3:
 			jugador = pygame.image.load("imagenes_domino/Jugador-3.png")
 			ventanta.blit(jugador, (0, 0))
@@ -250,6 +261,10 @@ while True:
 				todosloscuadros.append(cuadro)
 				todosloscuadros.append(cuadro2)
 				posicionesx += 60
+			if ganar == "si":
+				fuente = pygame.font.Font(None,50)
+				eltexto1 = fuente.render("ganó el jugador 2!!", 0, (233,233,87))
+				ventanta.blit(eltexto1,(550,400))
 		elif turno == 4:
 			jugador = pygame.image.load("imagenes_domino/Jugador-4.png")
 			ventanta.blit(jugador, (0, 0))
@@ -264,6 +279,10 @@ while True:
 				todosloscuadros.append(cuadro)
 				todosloscuadros.append(cuadro2)
 				posicionesx += 60
+			if ganar == "si":
+				fuente = pygame.font.Font(None,50)
+				eltexto1 = fuente.render("ganó el jugador 3!!", 0, (233,233,87))
+				ventanta.blit(eltexto1,(550,400))
 		posicionesx = 650
 		# yaponidas = juego.fichaseliminadas
 		# for x in yaponidas:
@@ -272,16 +291,31 @@ while True:
 		# 	posicionesx += 20
 		izquierda = juego.izquierda
 		derecha = juego.derecha
+		izquierda2 = juego.copiaclickiz
+		derecha2 = juego.copiaclickde
 		ficha2 = pygame.image.load("domino/piezas_domino/28.jpg")
+		ficha2 = pygame.transform.rotate(ficha2, 90)
 		ventanta.blit(ficha2, (posicionesx, 200))
 		for x in izquierda:
-			posicionesx -= 50
+			posicionesx -= 100
 			ficha2 = pygame.image.load("domino/piezas_domino/" + str(x[0]) + ".jpg")
+			for y in izquierda2:
+				if y[0] == x[0]:
+					ficha2 = pygame.transform.rotate(ficha2, 90)
+			for y in derecha2:
+				if y[0] == x[0]:
+					ficha2 = pygame.transform.rotate(ficha2, -90)
 			ventanta.blit(ficha2, (posicionesx, 200))
 		posicionesx = 650
 		for x in derecha:
-			posicionesx += 50
+			posicionesx += 100
 			ficha2 = pygame.image.load("domino/piezas_domino/" + str(x[0]) + ".jpg")
+			for y in izquierda2:
+				if y[0] == x[0]:
+					ficha2 = pygame.transform.rotate(ficha2, 90)
+			for y in derecha2:
+				if y[0] == x[0]:
+					ficha2 = pygame.transform.rotate(ficha2, -90)
 			ventanta.blit(ficha2, (posicionesx, 200))
 		for event in pygame.event.get():
 			if event.type == QUIT:
@@ -363,7 +397,7 @@ while True:
 									juego.poner_ficha(juego.fichas_jugador3[6], turno)
 								elif turno == 4:
 									juego.poner_ficha(juego.fichas_jugador4[6], turno)
-						juego.victoria()
+						ganar = juego.victoria()
 					turno = turno + 1
 					if turno == 5:
 						turno = 1

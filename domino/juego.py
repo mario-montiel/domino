@@ -9,6 +9,8 @@ class Juego:
     ultima_ficha_puesta = []
     izquierda = []
     derecha = []
+    copiaclickiz = []
+    copiaclickde = []
     fichamentira = [6,6]
     fichaseliminadas = []
     # puntuacion_j_1 = 0
@@ -95,7 +97,17 @@ class Juego:
         
     def poner_ficha(self, click, jugador):
         # COMPARO FICHA Y LA ELIMINO A LA VERGA!!!
+        contador = 0
         if click[2] == self.fichamentira[0]:
+            objeto = []
+            for x in click:
+                contador += 1
+                if contador < 5:
+                    objeto.append(x)
+                else:
+                    objeto.append("derecha")
+            self.copiaclickde.append(objeto)
+            # copiaclick[5] = "derecha"
             self.izquierda.append(click)
             self.fichamentira[0] = click[3]
             if jugador == 1:
@@ -107,6 +119,15 @@ class Juego:
             elif jugador == 4:
                 self.fichas_jugador4.remove(click)
         elif click[2] == self.fichamentira[1]:
+            objeto = []
+            for x in click:
+                contador += 1
+                if contador < 5:
+                    objeto.append(x)
+                else:
+                    objeto.append("izquierda")
+            self.copiaclickiz.append(objeto)
+            # copiaclick[5] = "izquierda"
             self.derecha.append(click)
             self.fichamentira[1] = click[3]
             if jugador == 1:
@@ -118,6 +139,15 @@ class Juego:
             elif jugador == 4:
                 self.fichas_jugador4.remove(click)
         elif click[3] == self.fichamentira[0]:
+            objeto = []
+            for x in click:
+                contador += 1
+                if contador < 5:
+                    objeto.append(x)
+                else:
+                    objeto.append("izquierda")
+            self.copiaclickiz.append(objeto)
+            # copiaclick[5] = "izquierda"
             self.izquierda.append(click)
             self.fichamentira[0] = click[2]
             if jugador == 1:
@@ -129,6 +159,15 @@ class Juego:
             elif jugador == 4:
                 self.fichas_jugador4.remove(click)
         elif click[3] == self.fichamentira[1]:
+            objeto = []
+            for x in click:
+                contador += 1
+                if contador < 5:
+                    objeto.append(x)
+                else:
+                    objeto.append("derecha")
+            self.copiaclickde.append(objeto)
+            # copiaclick[5] = "derecha"
             self.derecha.append(click)
             self.fichamentira[1] = click[2]
             if jugador == 1:
@@ -169,15 +208,21 @@ class Juego:
         if len(self.fichas_jugador1) <= 0:
             print("GANÓ JUGADOR 1")
             self.victoria = 6
+            return "si"
         elif len(self.fichas_jugador2) <= 0:
             print("GANÓ JUGADOR 2")
             self.victoria = 6
+            return "si"
         elif len(self.fichas_jugador3) <= 0:
             print("GANÓ JUGADOR 3")
             self.victoria = 6
+            return "si"
         elif len(self.fichas_jugador4) <= 0:
             print("GANÓ JUGADOR 4")
             self.victoria = 6
+            return "si"
+        else:
+            return "no"
             
     # def puntuacion(self):
     #     if 
