@@ -283,7 +283,7 @@ while True:
 				fuente = pygame.font.Font(None,50)
 				eltexto1 = fuente.render("ganó el jugador 3!!", 0, (233,233,87))
 				ventanta.blit(eltexto1,(550,400))
-		posicionesx = 650
+		posicionesx = 700
 		# yaponidas = juego.fichaseliminadas
 		# for x in yaponidas:
 		# 	ficha2 = pygame.image.load("domino/piezas_domino/" + str(x[0]) + ".jpg")
@@ -294,11 +294,13 @@ while True:
 		izquierda2 = juego.copiaclickiz
 		derecha2 = juego.copiaclickde
 		ficha2 = pygame.image.load("domino/piezas_domino/28.jpg")
+		ficha2 = pygame.transform.scale(ficha2,(30,60))
 		ficha2 = pygame.transform.rotate(ficha2, 90)
 		ventanta.blit(ficha2, (posicionesx, 200))
 		for x in izquierda:
-			posicionesx -= 100
+			posicionesx -= 60
 			ficha2 = pygame.image.load("domino/piezas_domino/" + str(x[0]) + ".jpg")
+			ficha2 = pygame.transform.scale(ficha2,(30,60))
 			for y in izquierda2:
 				if y[0] == x[0]:
 					ficha2 = pygame.transform.rotate(ficha2, 90)
@@ -306,10 +308,11 @@ while True:
 				if y[0] == x[0]:
 					ficha2 = pygame.transform.rotate(ficha2, -90)
 			ventanta.blit(ficha2, (posicionesx, 200))
-		posicionesx = 650
+		posicionesx = 700
 		for x in derecha:
-			posicionesx += 100
+			posicionesx += 60
 			ficha2 = pygame.image.load("domino/piezas_domino/" + str(x[0]) + ".jpg")
+			ficha2 = pygame.transform.scale(ficha2,(30,60))
 			for y in izquierda2:
 				if y[0] == x[0]:
 					ficha2 = pygame.transform.rotate(ficha2, 90)
