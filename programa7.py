@@ -27,6 +27,7 @@ input_box3 = pygame.Rect(100,100, 140, 32)
 input_box4 = pygame.Rect(100,100, 140, 32)
 color_inactive = pygame.Color(228,201,0)
 color_active = pygame.Color(255,240,133)
+btonsaliendo = pygame.Rect(550,460,282,50)
 color = color_inactive
 color2 = color_inactive
 color3 = color_inactive
