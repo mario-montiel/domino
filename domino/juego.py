@@ -95,89 +95,91 @@ class Juego:
                 self.iniciar_mula = 1
                 return 1
         
-    def poner_ficha(self, click, jugador):
+    def poner_ficha(self, click, jugador, klado):
         # COMPARO FICHA Y LA ELIMINO A LA VERGA!!!
         contador = 0
-        if click[2] == self.fichamentira[0]:
-            objeto = []
-            for x in click:
-                contador += 1
-                if contador < 5:
-                    objeto.append(x)
-                else:
-                    objeto.append("derecha")
-            self.copiaclickde.append(objeto)
-            # copiaclick[5] = "derecha"
-            self.izquierda.append(click)
-            self.fichamentira[0] = click[3]
-            if jugador == 1:
-                self.fichas_jugador1.remove(click)
-            elif jugador == 2:
-                self.fichas_jugador2.remove(click)
-            elif jugador == 3:
-                self.fichas_jugador3.remove(click)
-            elif jugador == 4:
-                self.fichas_jugador4.remove(click)
-        elif click[2] == self.fichamentira[1]:
-            objeto = []
-            for x in click:
-                contador += 1
-                if contador < 5:
-                    objeto.append(x)
-                else:
-                    objeto.append("izquierda")
-            self.copiaclickiz.append(objeto)
-            # copiaclick[5] = "izquierda"
-            self.derecha.append(click)
-            self.fichamentira[1] = click[3]
-            if jugador == 1:
-                self.fichas_jugador1.remove(click)
-            elif jugador == 2:
-                self.fichas_jugador2.remove(click)
-            elif jugador == 3:
-                self.fichas_jugador3.remove(click)
-            elif jugador == 4:
-                self.fichas_jugador4.remove(click)
-        elif click[3] == self.fichamentira[0]:
-            objeto = []
-            for x in click:
-                contador += 1
-                if contador < 5:
-                    objeto.append(x)
-                else:
-                    objeto.append("izquierda")
-            self.copiaclickiz.append(objeto)
-            # copiaclick[5] = "izquierda"
-            self.izquierda.append(click)
-            self.fichamentira[0] = click[2]
-            if jugador == 1:
-                self.fichas_jugador1.remove(click)
-            elif jugador == 2:
-                self.fichas_jugador2.remove(click)
-            elif jugador == 3:
-                self.fichas_jugador3.remove(click)
-            elif jugador == 4:
-                self.fichas_jugador4.remove(click)
-        elif click[3] == self.fichamentira[1]:
-            objeto = []
-            for x in click:
-                contador += 1
-                if contador < 5:
-                    objeto.append(x)
-                else:
-                    objeto.append("derecha")
-            self.copiaclickde.append(objeto)
-            # copiaclick[5] = "derecha"
-            self.derecha.append(click)
-            self.fichamentira[1] = click[2]
-            if jugador == 1:
-                self.fichas_jugador1.remove(click)
-            elif jugador == 2:
-                self.fichas_jugador2.remove(click)
-            elif jugador == 3:
-                self.fichas_jugador3.remove(click)
-            elif jugador == 4:
-                self.fichas_jugador4.remove(click)
+        if klado== "d":
+            if click[2] == self.fichamentira[0]:
+                objeto = []
+                for x in click:
+                    contador += 1
+                    if contador < 5:
+                        objeto.append(x)
+                    else:
+                        objeto.append("derecha")
+                self.copiaclickde.append(objeto)
+                # copiaclick[5] = "derecha"
+                self.izquierda.append(click)
+                self.fichamentira[0] = click[3]
+                if jugador == 1:
+                    self.fichas_jugador1.remove(click)
+                elif jugador == 2:
+                    self.fichas_jugador2.remove(click)
+                elif jugador == 3:
+                    self.fichas_jugador3.remove(click)
+                elif jugador == 4:
+                    self.fichas_jugador4.remove(click)
+            elif click[3] == self.fichamentira[1]:
+                objeto = []
+                for x in click:
+                    contador += 1
+                    if contador < 5:
+                        objeto.append(x)
+                    else:
+                        objeto.append("derecha")
+                self.copiaclickde.append(objeto)
+                # copiaclick[5] = "derecha"
+                self.derecha.append(click)
+                self.fichamentira[1] = click[2]
+                if jugador == 1:
+                    self.fichas_jugador1.remove(click)
+                elif jugador == 2:
+                    self.fichas_jugador2.remove(click)
+                elif jugador == 3:
+                    self.fichas_jugador3.remove(click)
+                elif jugador == 4:
+                    self.fichas_jugador4.remove(click)
+        elif klado == "i":
+            if click[2] == self.fichamentira[1]:
+                objeto = []
+                for x in click:
+                    contador += 1
+                    if contador < 5:
+                        objeto.append(x)
+                    else:
+                        objeto.append("izquierda")
+                self.copiaclickiz.append(objeto)
+                # copiaclick[5] = "izquierda"
+                self.derecha.append(click)
+                self.fichamentira[1] = click[3]
+                if jugador == 1:
+                    self.fichas_jugador1.remove(click)
+                elif jugador == 2:
+                    self.fichas_jugador2.remove(click)
+                elif jugador == 3:
+                    self.fichas_jugador3.remove(click)
+                elif jugador == 4:
+                    self.fichas_jugador4.remove(click)
+            elif click[3] == self.fichamentira[0]:
+                objeto = []
+                for x in click:
+                    contador += 1
+                    if contador < 5:
+                        objeto.append(x)
+                    else:
+                        objeto.append("izquierda")
+                self.copiaclickiz.append(objeto)
+                # copiaclick[5] = "izquierda"
+                self.izquierda.append(click)
+                self.fichamentira[0] = click[2]
+                if jugador == 1:
+                    self.fichas_jugador1.remove(click)
+                elif jugador == 2:
+                    self.fichas_jugador2.remove(click)
+                elif jugador == 3:
+                    self.fichas_jugador3.remove(click)
+                elif jugador == 4:
+                    self.fichas_jugador4.remove(click)
         print(str(self.fichamentira))
         cizquierda = ""
         cderecha = ""
@@ -201,9 +203,7 @@ class Juego:
         # else:
         #     print("FICHA INCORRECTA")
         #     print("ÚLTIMA FICHA PUESTA: " + str(self.ultima_ficha_puesta))
-            
-        
-        
+
     def victoria(self):
         if len(self.fichas_jugador1) <= 0:
             print("GANÓ JUGADOR 1")
