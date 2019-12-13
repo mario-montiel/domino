@@ -27,7 +27,7 @@ input_box3 = pygame.Rect(100,100, 140, 32)
 input_box4 = pygame.Rect(100,100, 140, 32)
 color_inactive = pygame.Color(228,201,0)
 color_active = pygame.Color(255,240,133)
-btonsaliendo = pygame.Rect(550,460,282,50)
+btonsaliendo = pygame.Rect(550,598,282,50)
 color = color_inactive
 color2 = color_inactive
 color3 = color_inactive
@@ -74,8 +74,12 @@ while True:
 			elif event.type == pygame.MOUSEBUTTONDOWN:
 				if maus.colliderect(stabton):
 					stabton = pygame.Rect(100000,100000, 670, 50)
+					btonsaliendo = pygame.Rect(550000000,46000000,282,50)
 					btoncomenzar2 = pygame.Rect(550,610,282,50)
 					pantalla = 2
+				elif maus.colliderect(btonsaliendo):
+					pygame.quit()
+					sys.exit()
 	elif pantalla == 2:
 		ventanta.blit(Mi_imagen2, (0, 0))
 		font = pygame.font.Font(None, 32)
