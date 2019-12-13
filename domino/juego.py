@@ -97,20 +97,21 @@ class Juego:
         
     def poner_ficha(self, click, jugador, klado):
         # COMPARO FICHA Y LA ELIMINO A LA VERGA!!!
+        print(klado)
         contador = 0
         if klado== "d":
-            if click[2] == self.fichamentira[0]:
+            if click[2] == self.fichamentira[1]:
                 objeto = []
                 for x in click:
                     contador += 1
                     if contador < 5:
                         objeto.append(x)
                     else:
-                        objeto.append("derecha")
-                self.copiaclickde.append(objeto)
-                # copiaclick[5] = "derecha"
-                self.izquierda.append(click)
-                self.fichamentira[0] = click[3]
+                        objeto.append("izquierda")
+                self.copiaclickiz.append(objeto)
+                # copiaclick[5] = "izquierda"
+                self.derecha.append(click)
+                self.fichamentira[1] = click[3]
                 if jugador == 1:
                     self.fichas_jugador1.remove(click)
                 elif jugador == 2:
@@ -140,18 +141,18 @@ class Juego:
                 elif jugador == 4:
                     self.fichas_jugador4.remove(click)
         elif klado == "i":
-            if click[2] == self.fichamentira[1]:
+            if click[2] == self.fichamentira[0]:
                 objeto = []
                 for x in click:
                     contador += 1
                     if contador < 5:
                         objeto.append(x)
                     else:
-                        objeto.append("izquierda")
-                self.copiaclickiz.append(objeto)
-                # copiaclick[5] = "izquierda"
-                self.derecha.append(click)
-                self.fichamentira[1] = click[3]
+                        objeto.append("derecha")
+                self.copiaclickde.append(objeto)
+                # copiaclick[5] = "derecha"
+                self.izquierda.append(click)
+                self.fichamentira[0] = click[3]
                 if jugador == 1:
                     self.fichas_jugador1.remove(click)
                 elif jugador == 2:
