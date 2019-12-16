@@ -41,6 +41,21 @@ class Juego:
             self.fichas_jugador3.pop()
         for x in range(0, contador4):
             self.fichas_jugador4.pop()
+        ultima_ficha_puesta = []
+        contadorizquierda = len(self.izquierda)
+        for x in range(0, contadorizquierda):
+            self.izquierda.pop()
+        contadorderecha = len(self.derecha)
+        for x in range(0, contadorderecha):
+            self.derecha.pop()
+        contadorcopiaclickiz = len(self.copiaclickiz)
+        for x in range(0, contadorcopiaclickiz):
+            self.copiaclickiz.pop()
+        contadorcopiaclicde = len(self.copiaclickde)
+        for x in range(0, contadorcopiaclicde):
+            self.copiaclickde.pop()
+        self.fichamentira[0] = 6
+        self.fichamentira[1] = 6
 
     def repartir_fichas(self, jugador, fichas):
         # SE REPARTEN LAS FICHAS DEPENDIENDO EL NÚMERO DEL JUGADOR
