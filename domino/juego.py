@@ -28,6 +28,20 @@ class Juego:
         jugador.append(nombre_jugador)
         return jugador
     
+    def reiniciartodoalavrga(self):
+        contador1 = len(self.fichas_jugador1)
+        contador2 = len(self.fichas_jugador2)
+        contador3 = len(self.fichas_jugador3)
+        contador4 = len(self.fichas_jugador4)
+        for x in range(0, contador1):
+            self.fichas_jugador1.pop()
+        for x in range(0, contador2):
+            self.fichas_jugador2.pop()
+        for x in range(0, contador3):
+            self.fichas_jugador3.pop()
+        for x in range(0, contador4):
+            self.fichas_jugador4.pop()
+
     def repartir_fichas(self, jugador, fichas):
         # SE REPARTEN LAS FICHAS DEPENDIENDO EL NÚMERO DEL JUGADOR
         # print(fichas[0:7])

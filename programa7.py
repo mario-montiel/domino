@@ -427,6 +427,7 @@ class MAINjuego:
 										elif turno == 4:
 											juego.poner_ficha(juego.fichas_jugador4[6], turno, klado)
 								elif maus.colliderect(btonreiniciartodoalavrga):
+									juego.reiniciartodoalavrga()
 									btonreiniciartodoalavrga = pygame.Rect(115000,6000000,150,50)
 									pantalla = 1
 									todosloscuadros = []
@@ -438,9 +439,9 @@ class MAINjuego:
 									text4 = ''
 									self.popo()
 								ganar = juego.victoria()
-						turno = turno + 1
-						if turno == 5:
-							turno = 1
+							turno = turno + 1
+							if turno == 5:
+								turno = 1
 			pygame.display.update()
 juego2 = MAINjuego()
 juego2.popo()
